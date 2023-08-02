@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-scroll-to-bottom",
+	"name": "Scroll to Bottom",
+	"version": "0.1.0",
+	"minAppVersion": "0.15.0",
+	"description": "Provides commands to scroll to the bottom (or top) of the active editor.",
+	"author": "Qyriad",
+	"authorUrl": "https://github.com/Qyriad",
+	"isDesktopOnly": false
+}
