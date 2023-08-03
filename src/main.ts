@@ -14,7 +14,7 @@ function log(...args: any[])
 function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string): asserts view is MarkdownView
 {
 	if ((view as MarkdownView).editor === undefined) {
-		throw new Error(msg)
+		throw new Error(`assertion failed: ${msg}`);
 	}
 }
 
@@ -22,7 +22,8 @@ export default class ScrollBottom extends Plugin
 {
 	async onload()
 	{
-		// This adds a simple command that can be triggered anywhere
+		log("loading");
+
 		this.addCommand({
 			id: 'scroll-bottom',
 			name: 'Scroll to Bottom',
@@ -32,7 +33,7 @@ export default class ScrollBottom extends Plugin
 
 	onunload()
 	{
-
+		log("unloading");
 	}
 
 
@@ -43,6 +44,9 @@ export default class ScrollBottom extends Plugin
 		);
 		const currentMode = view.getMode();
 		const lastLine = editor.lineCount();
+
+		// TODO: scroll such that the last line is in the middle of the screen (or something),
+		// rather than scrolling to the absolute most bottom it can be scrolled.
 
 		if (currentMode === "source") {
 
