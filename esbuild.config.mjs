@@ -9,6 +9,19 @@ if you want to view the source, please visit the github repository of this plugi
 */
 `;
 
+const HELP_ARGS = [
+	"--help",
+	"-help",
+	"-?",
+	"-h",
+	"help",
+];
+
+if (process.argv.some(arg => HELP_ARGS.includes(arg))) {
+	console.log("Usage: node esbuild.config.mjs [production]");
+	process.exit(0);
+}
+
 const prod = (process.argv[2] === "production");
 
 const context = await esbuild.context({
