@@ -13,7 +13,7 @@ function log(...args: any[])
 
 function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string): asserts view is MarkdownView
 {
-	if ((view as MarkdownView).editor !== undefined) {
+	if ((view as MarkdownView).editor === undefined) {
 		throw new Error(msg)
 	}
 }
