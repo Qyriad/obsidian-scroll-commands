@@ -19,7 +19,7 @@ function log(...args: any[])
 /**
  * Throws an {@link Error} if `view` is not a {@link MarkdownView}.
  */
-function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string): asserts view is MarkdownView
+function assertMarkdownView(view: MarkdownView | any, msg?: string): asserts view is MarkdownView
 {
 	if ((view as MarkdownView).editor === undefined) {
 		throw new Error(`assertion failed: ${msg}`);
