@@ -10,6 +10,7 @@ dev: _setup
 
 check: _setup
 	tsc --noEmit --checkJs --strict --noImplicitOverride
+	eslint ./src/
 
 build: _setup
 	tsc -noEmit -skipLibCheck

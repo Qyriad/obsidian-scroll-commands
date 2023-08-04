@@ -6,7 +6,7 @@ import {
 	Plugin,
 } from 'obsidian';
 
-const PLUGIN: string = "obsidian-scroll-commands";
+const PLUGIN = "obsidian-scroll-commands";
 
 /**
  * Passes arguments to {@link console.log}, prefixed with `"obsidian-scroll-commands: "`.
@@ -74,7 +74,7 @@ export default class ScrollCommands extends Plugin
 
 		if (currentMode === "source") {
 
-			let newPos = {
+			const newPos = {
 				from: { line: lastLine, ch: 0 },
 				to: { line: lastLine, ch: 0 },
 			} as EditorRange;
@@ -97,7 +97,7 @@ export default class ScrollCommands extends Plugin
 		const currentMode = view.getMode();
 
 		if (currentMode === "source") {
-			let newPos = {
+			const newPos = {
 				from: { line: 0, ch: 0 },
 				to: { line: 0, ch: 0 },
 			} as EditorRange;
