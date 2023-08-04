@@ -20,7 +20,7 @@ function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string)
 	}
 }
 
-export default class ScrollBottom extends Plugin
+export default class ScrollCommands extends Plugin
 {
 	async onload()
 	{
