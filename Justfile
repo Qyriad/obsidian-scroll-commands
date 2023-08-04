@@ -1,3 +1,5 @@
+set dotenv-load
+
 PLUGIN_DIR := ".obsidian/plugins/obsidian-scroll-commands"
 
 _setup:
@@ -13,6 +15,7 @@ build: _setup
 	tsc -noEmit -skipLibCheck
 	node esbuild.config.mjs production
 
-install VAULT: build
-	install main.js -vD --target-directory {{ VAULT }}/{{ PLUGIN_DIR }}
-	install manifest.json -vD --target-directory {{ VAULT }}/{{ PLUGIN_DIR }}
+# You'll need a `.env` file with `VAULT=/some/path/to/your/Obsidian/vault`.
+install: build
+	install main.js -vD --target-directory $VAULT/{{ PLUGIN_DIR }}
+	install manifest.json -vD --target-directory $VAULT/{{ PLUGIN_DIR }}
