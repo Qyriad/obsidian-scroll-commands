@@ -1,3 +1,3 @@
-# Scroll to Bottom plugin for Obsidian.md
+# Scroll Commands plugin for Obsidian.md
 
- Adds a command to scroll to the bottom. WIP.
+Adds commands to scroll to the bottom and top of the note. WIP.
