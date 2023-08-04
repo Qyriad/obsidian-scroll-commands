@@ -31,6 +31,12 @@ export default class ScrollBottom extends Plugin
 			name: 'Scroll to Bottom',
 			editorCallback: this.scrollToBottom,
 		});
+
+		this.addCommand({
+			id: "scroll-top",
+			name: "Scroll to Top",
+			editorCallback: this.scrollToTop,
+		});
 	}
 
 	onunload()
@@ -60,6 +66,26 @@ export default class ScrollBottom extends Plugin
 			editor.scrollIntoView(newPos);
 		} else if (currentMode === "preview") {
 			view.currentMode.applyScroll(lastLine);
+		}
+	}
+
+	scrollToTop(editor: Editor, view: MarkdownView | MarkdownFileInfo)
+	{
+		assertMarkdownView(view,
+			`${PLUGIN}: scrollToTop(): view passed as MarkdownFileInfo instead of MarkdownView`,
+		);
+
+		const currentMode = view.getMode();
+
+		if (currentMode === "source") {
+			let newPos = {
+				from: { line: 0, ch: 0 },
+				to: { line: 0, ch: 0 },
+			} as EditorRange;
+
+			editor.scrollIntoView(newPos);
+		} else if (currentMode === "preview") {
+			view.currentMode.applyScroll(0);
 		}
 	}
 }
