@@ -8,11 +8,17 @@ import {
 
 const PLUGIN: string = "obsidian-scroll-commands";
 
+/**
+ * Passes arguments to {@link console.log}, prefixed with `"obsidian-scroll-commands: "`.
+ */
 function log(...args: any[])
 {
-	console.log(`${PLUGIN}:`, ...args);
+	return console.log(`${PLUGIN}:`, ...args);
 }
 
+/**
+ * Throws an {@link Error} if `view` is not a {@link MarkdownView}.
+ */
 function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string): asserts view is MarkdownView
 {
 	if ((view as MarkdownView).editor === undefined) {
@@ -20,9 +26,16 @@ function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string)
 	}
 }
 
+/**
+ * The main plugin class for obsidian-scroll-commands.
+ * Registers commands in {@link ScrollCommands.onload}.
+ */
 export default class ScrollCommands extends Plugin
 {
-	async onload()
+	/**
+	 * Registers the commands "scroll-bottom" and "scroll-top" as editor commands.
+	 */
+	override async onload()
 	{
 		log("loading");
 
@@ -39,12 +52,15 @@ export default class ScrollCommands extends Plugin
 		});
 	}
 
-	onunload()
+	override onunload()
 	{
 		log("unloading");
 	}
 
 
+	/**
+	 * Command handler for "scroll-bottom".
+	 */
 	scrollToBottom(editor: Editor, view: MarkdownView | MarkdownFileInfo)
 	{
 		assertMarkdownView(view,
@@ -69,6 +85,9 @@ export default class ScrollCommands extends Plugin
 		}
 	}
 
+	/**
+	 * Command handler for "scroll-top".
+	 */
 	scrollToTop(editor: Editor, view: MarkdownView | MarkdownFileInfo)
 	{
 		assertMarkdownView(view,
