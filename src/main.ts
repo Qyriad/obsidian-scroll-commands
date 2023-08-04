@@ -6,9 +6,11 @@ import {
 	Plugin,
 } from 'obsidian';
 
+const PLUGIN: string = "obsidian-scroll-commands";
+
 function log(...args: any[])
 {
-	console.log("obsidian-scroll-to-bottom:", ...args);
+	console.log(`${PLUGIN}:`, ...args);
 }
 
 function assertMarkdownView(view: MarkdownView | MarkdownFileInfo, msg?: string): asserts view is MarkdownView
@@ -40,7 +42,7 @@ export default class ScrollBottom extends Plugin
 	scrollToBottom(editor: Editor, view: MarkdownView | MarkdownFileInfo)
 	{
 		assertMarkdownView(view,
-			"obsidian-scroll-to-bottom: scrollToBottom(): view passed as MarkdownFileInfo instead of MarkdownView",
+			`${PLUGIN}: scrollToBottom(): view passed as MarkdownFileInfo instead of MarkdownView`,
 		);
 		const currentMode = view.getMode();
 		const lastLine = editor.lineCount();

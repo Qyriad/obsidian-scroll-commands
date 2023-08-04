@@ -1,5 +1,5 @@
 {
-	"name": "obsidian-scroll-to-bottom",
+	"name": "obsidian-scroll-commands",
 	"version": "0.1.0",
 	"description": "Provides commands to scroll to the bottom (or top) of the active editor.",
 	"main": "main.js",
